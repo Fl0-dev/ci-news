@@ -1,68 +1,34 @@
-# CodeIgniter 4 Application Starter
+#True-news
 
-## What is CodeIgniter?
+## Description
+True-news est un repo qui affiche dans sa version 1.0 des news pas très pertinentes et qui me permet de m'entrainer à utiliser le framework CodeIgniter 4. Il part du tutoriel de [CodeIgniter 4](https://codeigniter.com/user_guide/). Il est possible que ce repo évolue dans le futur pour devenir un faux vrai site d'actualité.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Installation
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+prérequis:
+- PHP 7.4 ou plus
+- Composer
+- MySQL
+- npm pour tailwindcss
+- node.js pour tailwindcss
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Pour installer ce repo, il suffit de cloner le repo dans le dossier de votre choix. Ensuite, il faut installer les dépendances avec la commande `composer install`. Enfin, il faut créer un fichier `.env` à la racine du projet et y ajouter les informations de connexion à la base de données. Voici un exemple de fichier `.env`:
+```
+CI_ENVIRONMENT = development
+database.default.hostname = localhost
+database.default.database = ci4tutorial
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+```
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+Pour mettre en place la base de données, il suffit de créer une base de données avec le nom `ci4tutorial` et d'importer le fichier `ci4tutorial.sql` qui se trouve à la racine du projet.
 
-## Installation & updates
+Pour mettre en place tailwindcss, il faut installer les dépendances avec la commande `npm install` et ensuite compiler les fichiers css avec la commande `npm run build`.
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## Utilisation
+Pour la base de données, il faut lancer son serveur
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Pour lancer le projet, il suffit de lancer un serveur php avec la commande `php spark serve` à la racine du projet. Ensuite, il suffit de se rendre à l'adresse `http://localhost:8080` pour voir le projet.
 
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> The end of life date for PHP 7.4 was November 28, 2022.
-> The end of life date for PHP 8.0 was November 26, 2023.
-> If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> The end of life date for PHP 8.1 will be November 25, 2024.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Pour lancer le watcher de tailwindcss, il suffit de lancer la commande `npm run build` à la racine du projet.

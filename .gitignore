@@ -82,9 +82,10 @@ tests/coverage*
 phpunit
 
 #-------------------------
-# Composer
+# Composer / NPM
 #-------------------------
 vendor/
+node_modules
 
 #-------------------------
 # IDE / Development Files

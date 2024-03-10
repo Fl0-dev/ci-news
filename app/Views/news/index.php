@@ -1,4 +1,4 @@
-<h2><?= esc($title) ?></h2>
+<h2 class="text-xl"><?= esc($title) ?></h2>
 
 <?php if (!empty($news) && is_array($news)) : ?>
     <a href="/news/new">create article</a>

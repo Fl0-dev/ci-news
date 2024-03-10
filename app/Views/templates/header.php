@@ -3,8 +3,7 @@
 
 <head>
     <title>CodeIgniter Tutorial</title>
+    <link href="<?= base_url('css/output.css'); ?>" rel="stylesheet">
 </head>
 
-<body>
-
-    <h1><?= esc($title) ?></h1>
+<body class="bg-slate-700">
