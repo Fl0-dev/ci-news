@@ -6,7 +6,8 @@ use CodeIgniter\Model;
 
 class NewsModel extends Model
 {
-    protected $table = 'news';
+    protected $table = 'news'; // table name
+    protected $allowedFields = ['title', 'slug', 'body']; // fields that can be set during insert/update
 
     public function getNews($slug = false)
     {
