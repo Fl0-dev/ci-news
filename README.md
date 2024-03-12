@@ -15,12 +15,17 @@ prérequis:
 Pour installer ce repo, il suffit de cloner le repo dans le dossier de votre choix. Ensuite, il faut installer les dépendances avec la commande `composer install`. Enfin, il faut créer un fichier `.env` à la racine du projet et y ajouter les informations de connexion à la base de données. Voici un exemple de fichier `.env`:
 ```
 CI_ENVIRONMENT = development
+
+NEWS_API_KEY = "your_api"
+
 database.default.hostname = localhost
 database.default.database = ci4tutorial
 database.default.username = root
 database.default.password = 
 database.default.DBDriver = MySQLi
 ```
+
+Pour l'apiKey de newsapi, il faut aller sur le site de [newsapi](https://newsapi.org/) et s'inscrire pour obtenir une clé d'API.
 
 Pour mettre en place la base de données, il suffit de créer une base de données avec le nom `ci4tutorial` et d'importer le fichier `ci4tutorial.sql` qui se trouve à la racine du projet.
 
