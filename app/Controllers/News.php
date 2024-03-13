@@ -66,9 +66,7 @@ class News extends BaseController
         $post = $this->validator->getValidated();
 
         $model = model(NewsModel::class);
-        $data = [
-            'slug'  => url_title($post['title'], '-', true),
-        ];
+
         $slug = url_title($post['title'], '-', true);
         $model->save([
             'title' => $post['title'],
@@ -76,8 +74,6 @@ class News extends BaseController
             'body'  => $post['body'],
         ]);
 
-        return view('templates/header', ['title' => 'Create a news item'])
-            . view('news/success', $data)
-            . view('templates/footer');
+        return redirect()->to('/news/' . $slug);
     }
 }
