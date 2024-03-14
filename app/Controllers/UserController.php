@@ -63,7 +63,30 @@ class UserController extends BaseController
 
     public function attemptLogin()
     {
-        // TODO
+        $data = [
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+        ];
+
+        $rules = [
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[8]',
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->to('/login')->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $model = model(UserModel::class);
+        $user = $model->getUsers($data['email']);
+
+        if (!$user || !password_verify($data['password'], $user['password'])) {
+            return redirect()->to('/login')->withInput()->with('error', 'Invalid email or password.');
+        }
+
+        session()->set('user', $user);
+
+        return redirect()->to('/live');
     }
 
     public function profile()
