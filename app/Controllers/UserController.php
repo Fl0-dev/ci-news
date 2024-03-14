@@ -84,14 +84,28 @@ class UserController extends BaseController
             return redirect()->to('/login')->withInput()->with('error', 'Invalid email or password.');
         }
 
-        session()->set('user', $user);
+        session()->set('user', [
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'firstname' => $user['firstname'],
+            'lastname' => $user['lastname'],
+        ]);
 
         return redirect()->to('/live');
     }
 
     public function profile()
     {
-        // TODO
+        helper('form');
+        $user = session()->get('user');
+
+        if (!$user) {
+            return redirect()->to('/login');
+        }
+
+        return view('templates/header')
+            . view('user/profile', ['user' => $user])
+            . view('templates/footer');
     }
 
     public function updateProfile()
@@ -101,6 +115,8 @@ class UserController extends BaseController
 
     public function logout()
     {
-        // TODO
+        session()->remove('user');
+
+        return redirect()->to('/');
     }
 }

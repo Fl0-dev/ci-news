@@ -6,7 +6,12 @@
     <link href="<?= base_url('css/output.css'); ?>" rel="stylesheet">
 </head>
 
-<body class="bg-font pt-24 lg:px-24 px-4">
+<?php
+$session = session();
+// var_dump($session->get('user'));
+?>
+
+<body class="bg-font pt-24">
     <nav class="bg-font fixed w-full z-20 top-0 start-0">
         <div class="flex flex-wrap items-center justify-between mx-auto py-4 lg:px-24 px-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -20,14 +25,28 @@
                 </svg>
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-500 bg-font rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-500 bg-font rounded-lg md:flex-row md:space-x-6 rtl:space-x-reverse md:mt-0 md:border-0">
                     <li>
                         <a href="/live" class="block py-2 px-3 text-primary lg:text-xl rounded hover:bg-primary hover:text-font ease-in-out duration-500">Live</a>
                     </li>
                     <li>
                         <a href="/news" class="block py-2 px-3 text-primary lg:text-xl rounded hover:bg-primary hover:text-font ease-in-out duration-500">News</a>
                     </li>
+                    <?php if ($session->get('user')) : ?>
+                        <li>
+                            <a href="/profile" class="block py-2 px-3 text-primary lg:text-xl rounded hover:bg-primary hover:text-font ease-in-out duration-500">Profile</a>
+                        </li>
+                        <li>
+                            <a href="/logout" class="block py-2 px-3 text-primary lg:text-xl rounded hover:bg-primary hover:text-font ease-in-out duration-500">Logout</a>
+                        </li>
+                    <?php else : ?>
+                        <li>
+                            <a href="/login" class="block py-2 px-3 text-primary lg:text-xl rounded hover:bg-primary hover:text-font ease-in-out duration-500">Login</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <main class="lg:px-24 px-4">

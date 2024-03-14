@@ -1,5 +1,13 @@
-<footer>
+</main>
+<footer class="py-24 bg-primary mt-10 w-full">
+    <div class="container">
+        <div class=" text-center">
+            <div class="text-white" role="contentinfo">
+                &copy; Copyright <?= date('Y') ?> - Tous droits réservés<br>
+            </div>
 
+        </div>
+    </div>
 </footer>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
